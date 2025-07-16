@@ -1,1 +1,48 @@
 
+import tkinter as tk
+from tkinter import messagebox
+
+# ログインボタンがクリックされたときの処理
+def login():
+    """
+    入力されたユーザー名とパスワードを取得し、
+    簡単な認証ロジックを実行します。
+    """
+    username = username_entry.get()
+    password = password_entry.get()
+
+    # 簡単な認証ロジックの例
+    if username == "admin" and password == "password":
+        messagebox.showinfo("ログイン成功", "ようこそ, " + username + "!")
+        # ここでメインアプリケーションのウィンドウを開くなどの処理を追加できます
+        # root.destroy() # ログイン成功後にログインウィンドウを閉じる場合
+    else:
+        messagebox.showerror("ログイン失敗", "ユーザー名またはパスワードが違います。")
+
+# メインウィンドウの作成
+root = tk.Tk()
+root.title("ログイン画面")
+root.geometry("300x150") # ウィンドウサイズを指定
+
+# ユーザー名ラベルと入力フィールド
+username_label = tk.Label(root, text="ユーザー名:")
+username_label.pack()
+username_entry = tk.Entry(root)
+username_entry.pack()
+
+# パスワードラベルと入力フィールド
+password_label = tk.Label(root, text="パスワード:")
+password_label.pack()
+password_entry = tk.Entry(root, show="*") # 入力内容を「*」で表示
+password_entry.pack()
+
+# ログインボタン
+login_button = tk.Button(root, text="ログイン", command=login)
+login_button.pack(pady=5)
+
+# 終了ボタン
+quit_button = tk.Button(root, text="終了", command=root.quit)
+quit_button.pack()
+
+# イベントループの開始
+root.mainloop()
