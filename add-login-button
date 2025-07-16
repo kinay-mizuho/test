@@ -46,3 +46,5 @@ quit_button.pack()
 
 # イベントループの開始
 root.mainloop()
+
+# 変更しました
